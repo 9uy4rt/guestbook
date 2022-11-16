@@ -52,4 +52,14 @@ public class GuestServicempl implements GuestbookService {
 
         return result.isPresent() ? entityToDto(result.get()) : null;
     }
+
+    @Override
+    public void remove(Long gno) {
+
+    }
+
+    @Override
+    public void modify(GuestbookDTO dto) {
+
+    }
 }
