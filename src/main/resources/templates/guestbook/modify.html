@@ -8,6 +8,8 @@
         <h1 class="mt-4">GuestBook Modify Page</h1>
 
         <form action="/guestbook/modify" method="post">
+            <input type="hidden" name="page" th:value="${requestDTO.page}">
+
             <div class="mt-2">
                 <label>Gno</label>
                 <input type="text" class="form-control" name="gno" th:value="${dto.gno}" readonly>
@@ -21,7 +23,7 @@
             <div class="mb-2">
                 <label>Content</label>
                 <textarea class="form-control" rows="5" name="content" th:value="${dto.content}"
-                          >[[${dto.content}]]</textarea>
+                >[[${dto.content}]]</textarea>
             </div>
 
             <div class="mb-2">
@@ -42,13 +44,34 @@
             </div>
         </form>
 
-        <button type="button" class="btn btn-primary">Modify</button>
-        <button type="button" class="btn btn-info">List</button>
-        <button type="button" class="btn btn-danger">Remove</button>
+        <button type="button" class="btn btn-primary modifyBtn">Modify</button>
+        <button type="button" class="btn btn-info listBtn">List</button>
+        <button type="button" class="btn btn-danger removeBtn">Remove</button>
 
     </th:block>
 
 </th:block>
+
+<script th:inline="javascript">
+    var actionForm=$("form");
+    $(".removeBtn").click(function (){
+        actionForm
+        .attr("action","/guestbook/remove")
+        .attr("method","post");
+
+        actionForm.submit();
+    });
+
+    $(".modifyBtn").click(function (){
+        if (!confirm("수정하시겠습니까?")){
+            return;
+        }
+        actionForm
+            .attr("action","/guestbook/modify")
+            .attr("method","post")
+            .submit();
+    });
+</script>
 
 <head>
     <meta charset="UTF-8">
