@@ -21,30 +21,30 @@ public class GuestbookController {
     private final GuestbookService service;
 
     @GetMapping({"/"})
-    public String list(){
+    public String list() {
         log.info("list..............");
 
         return "/guestbook/list";
     }
 
     @GetMapping("/list")
-    public void list(PageRequestDTO pageRequestDTO, Model model){
-        log.info("list............."+pageRequestDTO);
+    public void list(PageRequestDTO pageRequestDTO, Model model) {
+        log.info("list............." + pageRequestDTO);
         model.addAttribute("result", service.getList(pageRequestDTO));
     }
 
     @GetMapping("/register")
-    public void register(){
+    public void register() {
         log.info("register get.....");
     }
 
     @PostMapping("/register")
-    public String registerPost(GuestbookDTO dto, RedirectAttributes redirectAttributes){
-        log.info("dto...."+dto);
+    public String registerPost(GuestbookDTO dto, RedirectAttributes redirectAttributes) {
+        log.info("dto...." + dto);
 
-        Long gno=service.register(dto);
+        Long gno = service.register(dto);
 
-        redirectAttributes.addFlashAttribute("msg,gno");
+        redirectAttributes.addFlashAttribute("msg", gno);
 
         return "redirect:/guestbook/list";
     }

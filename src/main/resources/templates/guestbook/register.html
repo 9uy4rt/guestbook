@@ -7,17 +7,17 @@
         <h1 class="mt-4">GuestBook Register Page</h1>
 
         <form th:action="@{/guestbook/register}" th:method="post">
-            <div class="form-group">
+            <div class="mb-2">
                 <label>Title</label>
                 <input type="text" class="form-control" name="title" placeholder="Enter Title">
             </div>
 
-            <div class="form-group">
+            <div class="mb-2">
                 <label>Content</label>
                 <textarea class="form-control" rows="5" name="content"></textarea>
             </div>
 
-            <div class="form-group">
+            <div class="mb-2">
                 <label>Writer</label>
                 <input type="text" class="form-control" name="writer" placeholder="Enter Writer">
             </div>
