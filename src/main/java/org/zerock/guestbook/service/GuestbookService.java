@@ -30,6 +30,7 @@ public interface GuestbookService {
                 .modDate(entity.getModDate())
                 .build();
         return dto;
+
     }
 
     GuestbookDTO read(Long gno);
